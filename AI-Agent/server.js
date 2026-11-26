@@ -1,9 +1,16 @@
 import { Hono } from "hono";
 import { serve } from "@hono/node-server"; 
 import { runAgent } from "./agent.js";
+import { ok } from "assert";
 
 const app = new Hono();
 
+app.get("/health" , (c) => {
+  return c.json({
+    message: "Server is running",
+    status: ok
+  })
+})
 app.post("/api/agent", async (c) => {
   try {
     const body = await c.req.json();
