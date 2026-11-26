@@ -8,7 +8,7 @@ const app = new Hono();
 app.get("/health" , (c) => {
   return c.json({
     message: "Server is running",
-    status: ok
+    status: "ok"
   })
 })
 app.post("/api/agent", async (c) => {
